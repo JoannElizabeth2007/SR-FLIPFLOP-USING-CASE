@@ -68,10 +68,12 @@ module sr_ff (s, r, clk, rst, q);
 endmodule
 ```
 **RTL LOGIC FOR FLIPFLOPS**
+
 ![Screenshot 2024-12-28 195847](https://github.com/user-attachments/assets/4b922c63-5be8-420d-a683-2479119886fa)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 ![Screenshot 2024-12-28 195853](https://github.com/user-attachments/assets/626301af-17ee-46bb-8c38-a674d71527f2)
 
 **RESULTS**
+
 Program for SR flipflop was verified in quartus using Verilog programming.
