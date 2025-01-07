@@ -47,33 +47,32 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 RegisterNumber:24900609
 
 ```
-module sr_ff (s, r, clk, rst, q);
-  input s, r, clk, rst;
-  output reg q;
-
-  always @(posedge clk or posedge rst)
- begin
-    if (rst)
-      q <= 0; // Reset the flip-flop
-    else
- begin
-      case ({s, r}) // S and R control the behavior
-        2'b00: q <= q;    // No change
-        2'b01: q <= 0;    // Reset
-        2'b10: q <= 1;    // Set
-        2'b11: q <= 0;    // Invalid state, typically treated as reset
-      endcase
-    end
-  end
+module sr_ff(s,r,clk,q,qbar);
+input s,r,clk;
+output reg q;
+output reg qbar;
+initial 
+begin
+q=0;
+qbar=1;
+end
+always @(posedge clk)
+begin
+   q=s|(~r&q);
+   qbar=r|(~s&~q);
+end
 endmodule
+
 ```
 **RTL LOGIC FOR FLIPFLOPS**
 
-![Screenshot 2024-12-28 195847](https://github.com/user-attachments/assets/4b922c63-5be8-420d-a683-2479119886fa)
+![image](https://github.com/user-attachments/assets/b5a88b9d-7859-4ca5-ba20-b4bf99410411)
+
 
 **TIMING DIAGRAMS FOR FLIP FLOPS**
 
-![image](https://github.com/user-attachments/assets/395d306f-b788-4df7-8117-f5afc9f04b27)
+![image](https://github.com/user-attachments/assets/de8021f3-9b9d-4f45-8c6d-8df1f5b93ff5)
+
 
 
 **RESULTS**
